@@ -13,13 +13,13 @@ the ARCHITECTURE.md that should have been created when the project was built.
 
 ## Before You Start
 
-Create a notes file at `{ProjectName}.ARCHITECTURE.notes.md` and build it
+Create a notes file at `_notes/{ProjectName}.ARCHITECTURE.notes.md` and build it
 incrementally as you read each file. This protects against context limits.
 
 **For each source code file in the project:**
 
 1. Read the file in its ENTIRETY - do not read partial line ranges
-2. Immediately append notes for that file to `{ProjectName}.ARCHITECTURE.notes.md`
+2. Immediately append notes for that file to `_notes/{ProjectName}.ARCHITECTURE.notes.md`
 3. Move to the next file
 
 **Notes format for each file:**

@@ -14,14 +14,14 @@ explains how all the pieces fit together.
 
 ## Before You Start
 
-Create a notes file at `SOLUTION.notes.md` and build it incrementally as you
+Create a notes file at `_notes/SOLUTION.notes.md` and build it incrementally as you
 review each project. This protects against context limits.
 
 **For each project/package in the repository:**
 
 1. Read the project manifest (package.json, pom.xml, .csproj, Cargo.toml, etc.)
 2. Read the project's ARCHITECTURE.md if it exists
-3. Immediately append notes for that project to `SOLUTION.notes.md`
+3. Immediately append notes for that project to `_notes/SOLUTION.notes.md`
 4. Move to the next project
 
 **Notes format:**
@@ -83,17 +83,17 @@ and when you'd need to work in it.
 Explain the relationships. A simple diagram helps:
 
 ```
-┌─────────────┐     ┌─────────────────┐
+┌─────────────┐      ┌─────────────────┐
 │   Web API   │────▶│   Core Logic    │
-└─────────────┘     └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   Data Access   │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │     Shared      │
-                    └─────────────────┘
+└─────────────┘      └────────┬────────┘
+                              │
+                     ┌────────▼────────┐
+                     │   Data Access   │
+                     └────────┬────────┘
+                              │
+                     ┌────────▼────────┐
+                     │     Shared      │
+                     └─────────────────┘
 ```
 
 ## Key Flows

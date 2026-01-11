@@ -13,7 +13,7 @@ CONFIGURATION.md that explains everything needed to run this project.
 
 ## Before You Start
 
-Create a notes file at `{ProjectName}.CONFIGURATION.notes.md` and build it
+Create a notes file at `_notes/{ProjectName}.CONFIGURATION.notes.md` and build it
 incrementally as you read each file. This protects against context limits.
 
 **For each file that uses configuration:**

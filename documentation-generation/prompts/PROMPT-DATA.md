@@ -14,13 +14,13 @@ schema.
 
 ## Before You Start
 
-Create a notes file at `{ProjectName}.DATA.notes.md` and build it
+Create a notes file at `_notes/{ProjectName}.DATA.notes.md` and build it
 incrementally as you read each file. This protects against context limits.
 
 **For each entity/model file in the project:**
 
 1. Read the file in its ENTIRETY - do not read partial line ranges
-2. Immediately append notes for that file to `{ProjectName}.DATA.notes.md`
+2. Immediately append notes for that file to `_notes/{ProjectName}.DATA.notes.md`
 3. Move to the next file
 
 **Notes format for each entity:**

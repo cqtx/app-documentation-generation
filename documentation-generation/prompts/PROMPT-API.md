@@ -14,13 +14,13 @@ available endpoints, how to use them, and what to expect.
 
 ## Before You Start
 
-Create a notes file at `{ProjectName}.API.notes.md` and build it
+Create a notes file at `_notes/{ProjectName}.API.notes.md` and build it
 incrementally as you read each file. This protects against context limits.
 
 **For each route handler/controller file in the project:**
 
 1. Read the file in its ENTIRETY - do not read partial line ranges
-2. Immediately append notes for that handler to `{ProjectName}.API.notes.md`
+2. Immediately append notes for that handler to `_notes/{ProjectName}.API.notes.md`
 3. Move to the next file
 
 **Notes format for each route handler:**
