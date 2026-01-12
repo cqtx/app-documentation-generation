@@ -13,13 +13,13 @@ WORKFLOWS.md that explains how the major processes work end-to-end.
 
 ## Before You Start
 
-Create a notes file at `_notes/{ProjectName}.WORKFLOWS.notes.md` and build it
-incrementally as you read each file. This protects against context limits.
+Create a notes file at `../output/_notes/{ProjectName}/WORKFLOWS.notes.md` and
+build it incrementally as you read each file. This protects against context limits.
 
 **For each service/controller/handler file in the project:**
 
 1. Read the file in its ENTIRETY - do not read partial line ranges
-2. Immediately append notes for workflows found to `_notes/{ProjectName}.WORKFLOWS.notes.md`
+2. Immediately append notes for workflows found to `../output/_notes/{ProjectName}/WORKFLOWS.notes.md`
 3. Move to the next file
 
 **Notes format for each workflow discovered:**

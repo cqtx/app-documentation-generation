@@ -19,38 +19,72 @@ Works with any language or framework.
 ```text
 ├── application/
 │   ├── source/                    # Your project/repository goes here
-│   └── database/
-│       ├── schema/                # Tables, indexes, constraints, views
-│       ├── procedures/            # Stored procedures, functions, triggers
-│       └── seed-data/             # INSERT scripts, reference data
+│   └── databases/                 # Add subfolders for each database technology
+│       └── {database-type}/       # e.g., mysql/, postgres/, db2/, mongodb/
+│           ├── schema/            # Tables, indexes, constraints, views
+│           ├── procedures/        # Stored procedures, functions, triggers
+│           └── seed-data/         # INSERT scripts, reference data
 │
 ├── documentation-generation/
 │   ├── prompts/                   # Prompt templates
 │   │   └── Initial-prompt.md      # Entry point for AI agent
 │   ├── output/                    # Generated documentation
+│   │   ├── {ProjectName}/         # Docs for each project
+│   │   └── _notes/                # Working notes (deletable after)
+│   │       └── {ProjectName}/     # Notes organized by project
 │   └── README.md                  # Detailed prompt usage guide
 │
 └── .github/
     └── copilot-instructions.md    # Instructions for GitHub Copilot
 ```
 
+### Setting Up Database Folders
+
+Create subfolders under `databases/` for each database technology your project uses:
+
+```text
+# Single database example
+databases/
+└── postgres/
+    ├── schema/
+    ├── procedures/
+    └── seed-data/
+
+# Multiple databases example
+databases/
+├── mysql/
+│   ├── schema/
+│   └── seed-data/
+└── db2/
+    └── procedures/
+```
+
+After creating your folders, update the "Additional Resources" table in
+`documentation-generation/prompts/Initial-prompt.md` to match your structure.
+
 ## What Gets Generated
 
 For each project:
 
-| Document            | Contains                             |
-| ------------------- | ------------------------------------ |
-| `ARCHITECTURE.md`   | System design, components, decisions |
-| `DATA.md`           | Entities, relationships, schema      |
-| `WORKFLOWS.md`      | Business processes, data flows       |
-| `API.md`            | REST endpoints, authentication       |
-| `CONFIGURATION.md`  | Settings, secrets, setup             |
+| Document           | Contains                             |
+| ------------------ | ------------------------------------ |
+| `ARCHITECTURE.md`  | System design, components, decisions |
+| `DATA.md`          | Entities, relationships, schema      |
+| `WORKFLOWS.md`     | Business processes, data flows       |
+| `API.md`           | REST endpoints, authentication       |
+| `CONFIGURATION.md` | Settings, secrets, setup             |
 
 For multi-project repositories:
 
-| Document       | Contains                                    |
-| -------------- | ------------------------------------------- |
-| `SOLUTION.md`  | Overview, project relationships, key flows  |
+| Document        | Contains                                   |
+| --------------- | ------------------------------------------ |
+| `REPOSITORY.md` | Overview, project relationships, key flows |
+
+### Working Notes
+
+During generation, the AI creates incremental notes in `output/_notes/{ProjectName}/`.
+These protect against context limits and help troubleshoot incomplete output. They can
+be safely deleted after documentation is finalized.
 
 ## Using with GitHub Copilot
 

@@ -10,10 +10,11 @@ It works with any language or framework.
 ```text
 ├── application/
 │   ├── source/                    # Project source code
-│   └── database/
-│       ├── schema/                # Tables, indexes, constraints, views
-│       ├── procedures/            # Stored procedures, functions, triggers
-│       └── seed-data/             # INSERT scripts, reference data
+│   └── databases/                 # Database resources (customizable)
+│       └── {db-type}/             # e.g., mysql/, postgres/, db2/
+│           ├── schema/            # Tables, indexes, constraints, views
+│           ├── procedures/        # Stored procedures, functions, triggers
+│           └── seed-data/         # INSERT scripts, reference data
 │
 └── documentation-generation/
     ├── prompts/                   # Documentation generation prompts
@@ -21,6 +22,9 @@ It works with any language or framework.
     ├── output/                    # Generated documentation
     └── README.md                  # Prompt usage guide
 ```
+
+**Note:** The `databases/` folder structure is customizable. Check `Initial-prompt.md`
+for the actual folder locations configured for this project.
 
 ## When Asked to Generate Documentation
 
@@ -34,7 +38,7 @@ It works with any language or framework.
 - For files over 200 lines, confirm complete reading
 - Include "Files Analyzed" section at end of each document
 - Reference database folders when documenting DATA.md and WORKFLOWS.md
-- Run PROMPT-SOLUTION.md last, after all projects are documented
+- Run PROMPT-REPOSITORY.md last, after all projects are documented
 
 ## Markdown Formatting Rules
 
@@ -55,12 +59,12 @@ Reference `.markdownlint.json` in the workspace root for the full configuration.
 
 First, detect the language/framework from the codebase, then determine type:
 
-| If project contains...             | It's likely a...       | Run these prompts          |
-| ---------------------------------- | ---------------------- | -------------------------- |
-| Route handlers, API endpoints      | Web API                | All prompts                |
-| ORM models, repositories           | Data access layer      | ARCH, DATA, CONFIG         |
-| Services, commands, business logic | Business logic library | ARCH, DATA, WORKFLOWS, CFG |
-| Workers, schedulers, queue handlers| Background service     | ARCH, DATA, WORKFLOWS, CFG |
-| Utilities, helpers, extensions     | Utility library        | ARCH, CONFIG only          |
-| CLI commands, argument parsing     | CLI tool               | ARCH, CONFIG               |
-| Components, pages, routes (UI)     | Frontend app           | ARCH, WORKFLOWS, CONFIG    |
+| If project contains...              | It's likely a...       | Run these prompts          |
+| ----------------------------------- | ---------------------- | -------------------------- |
+| Route handlers, API endpoints       | Web API                | All prompts                |
+| ORM models, repositories            | Data access layer      | ARCH, DATA, CONFIG         |
+| Services, commands, business logic  | Business logic library | ARCH, DATA, WORKFLOWS, CFG |
+| Workers, schedulers, queue handlers | Background service     | ARCH, DATA, WORKFLOWS, CFG |
+| Utilities, helpers, extensions      | Utility library        | ARCH, CONFIG only          |
+| CLI commands, argument parsing      | CLI tool               | ARCH, CONFIG               |
+| Components, pages, routes (UI)      | Frontend app           | ARCH, WORKFLOWS, CONFIG    |

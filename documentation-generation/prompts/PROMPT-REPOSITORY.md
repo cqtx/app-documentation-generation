@@ -1,6 +1,6 @@
-# Prompt: Generate Solution Overview
+# Prompt: Generate Repository Overview
 
-> **Output:** `SOLUTION.md`
+> **Output:** `REPOSITORY.md`
 > **Use for:** Multi-project/multi-package repositories
 
 ---
@@ -9,19 +9,19 @@
 
 ````text
 You are documenting a multi-project repository. First, detect the languages 
-and frameworks used, then analyze the structure and write SOLUTION.md that 
+and frameworks used, then analyze the structure and write REPOSITORY.md that 
 explains how all the pieces fit together.
 
 ## Before You Start
 
-Create a notes file at `_notes/SOLUTION.notes.md` and build it incrementally as you
-review each project. This protects against context limits.
+Create a notes file at `../output/_notes/{RepositoryName}/REPOSITORY.notes.md` and
+build it incrementally as you review each project. This protects against context limits.
 
 **For each project/package in the repository:**
 
 1. Read the project manifest (package.json, pom.xml, .csproj, Cargo.toml, etc.)
 2. Read the project's ARCHITECTURE.md if it exists
-3. Immediately append notes for that project to `_notes/SOLUTION.notes.md`
+3. Immediately append notes for that project to `../output/_notes/{RepositoryName}/REPOSITORY.notes.md`
 4. Move to the next project
 
 **Notes format:**
@@ -57,13 +57,13 @@ Write for a developer who is new to this codebase and needs to understand:
 - How the projects depend on each other
 - Where to start when making changes
 
-Project: {SolutionName}
+Project: {RepositoryName}
 
 ---
 
 Structure your document roughly like this (adapt as needed):
 
-# Solution Overview
+# Repository Overview
 
 ## What Is This?
 2-3 sentences on what this system does from a business perspective.
@@ -83,17 +83,17 @@ and when you'd need to work in it.
 Explain the relationships. A simple diagram helps:
 
 ```
-┌─────────────┐      ┌─────────────────┐
+┌─────────────┐     ┌─────────────────┐
 │   Web API   │────▶│   Core Logic    │
-└─────────────┘      └────────┬────────┘
-                              │
-                     ┌────────▼────────┐
-                     │   Data Access   │
-                     └────────┬────────┘
-                              │
-                     ┌────────▼────────┐
-                     │     Shared      │
-                     └─────────────────┘
+└─────────────┘     └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │   Data Access   │
+                    └────────┬────────┘
+                             │
+                    ┌────────▼────────┐
+                    │     Shared      │
+                    └─────────────────┘
 ```
 
 ## Key Flows

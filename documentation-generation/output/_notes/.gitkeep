@@ -1,2 +1,18 @@
-# Generated documentation will be saved here
-# Structure: {ProjectName}/ARCHITECTURE.md, DATA.md, etc.
+# Working Notes Directory
+#
+# AI-generated notes files are saved here during documentation generation.
+# These files protect against context limits by capturing analysis incrementally.
+#
+# Expected structure:
+#   _notes/
+#   ├── {ProjectName}/
+#   │   ├── ARCHITECTURE.notes.md
+#   │   ├── API.notes.md
+#   │   ├── CONFIGURATION.notes.md
+#   │   ├── DATA.notes.md
+#   │   └── WORKFLOWS.notes.md
+#   └── {RepositoryName}/
+#       └── REPOSITORY.notes.md
+#
+# These are working files and can be deleted after documentation is complete.
+# They may be useful for reviewing what the AI analyzed if output seems incomplete.

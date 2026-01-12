@@ -1,0 +1,15 @@
+# Database Resources
+#
+# Create subfolders for each database technology your project uses.
+#
+# Example structure:
+#   databases/
+#   ├── mysql/
+#   │   ├── schema/        # CREATE TABLE scripts
+#   │   ├── procedures/    # Stored procedures (if any)
+#   │   └── seed-data/     # INSERT scripts for reference data
+#   └── db2/
+#       └── procedures/    # DB2 stored procedures
+#
+# After creating folders, update the "Additional Resources" table in:
+#   documentation-generation/prompts/Initial-prompt.md

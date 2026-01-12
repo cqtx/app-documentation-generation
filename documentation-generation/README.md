@@ -29,32 +29,32 @@ Run these prompts in order (skip any that don't apply):
 ### For a Multi-Project Repository
 
 1. Document each project using the prompts above
-2. Run `PROMPT-SOLUTION.md` at the repo root → Creates `SOLUTION.md`
+2. Run `PROMPT-REPOSITORY.md` at the repo root → Creates `REPOSITORY.md`
 
 ## Which Prompts to Run
 
 Not every project needs every document. Use this guide:
 
-| Prompt                     | When to Use                                    |
-| -------------------------- | ---------------------------------------------- |
-| `PROMPT-ARCHITECTURE.md`   | **Always** - every project                     |
-| `PROMPT-DATA.md`           | Has entities, database access, or manages data |
-| `PROMPT-WORKFLOWS.md`      | Has business logic or processes                |
-| `PROMPT-API.md`            | Web API, REST endpoints, or HTTP interface     |
-| `PROMPT-CONFIGURATION.md`  | **Always** - every project needs setup info    |
-| `PROMPT-SOLUTION.md`       | Multi-project repositories only                |
+| Prompt                    | When to Use                                    |
+| ------------------------- | ---------------------------------------------- |
+| `PROMPT-ARCHITECTURE.md`  | **Always** - every project                     |
+| `PROMPT-DATA.md`          | Has entities, database access, or manages data |
+| `PROMPT-WORKFLOWS.md`     | Has business logic or processes                |
+| `PROMPT-API.md`           | Web API, REST endpoints, or HTTP interface     |
+| `PROMPT-CONFIGURATION.md` | **Always** - every project needs setup info    |
+| `PROMPT-REPOSITORY.md`    | Multi-project repositories only                |
 
 ### Examples by Project Type
 
-| Project Type                | Prompts to Run                          |
-| --------------------------- | --------------------------------------- |
-| Web API / Backend Service   | All                                     |
-| Library (business logic)    | ARCHITECTURE, DATA, WORKFLOWS, CONFIG   |
-| Library (utilities/helpers) | ARCHITECTURE, CONFIGURATION             |
-| Worker / Background Service | ARCHITECTURE, DATA, WORKFLOWS, CONFIG   |
-| Shared / Common Package     | ARCHITECTURE, CONFIGURATION             |
-| CLI Tool                    | ARCHITECTURE, CONFIGURATION             |
-| Frontend App                | ARCHITECTURE, WORKFLOWS, CONFIGURATION  |
+| Project Type                | Prompts to Run                        |
+| --------------------------- | ------------------------------------- |
+| Web API / Backend Service   | All                                   |
+| Library (business logic)    | ARCHITECTURE, DATA, WORKFLOWS, CONFIG |
+| Library (utilities/helpers) | ARCHITECTURE, CONFIGURATION           |
+| Worker / Background Service | ARCHITECTURE, DATA, WORKFLOWS, CONFIG |
+| Shared / Common Package     | ARCHITECTURE, CONFIGURATION           |
+| CLI Tool                    | ARCHITECTURE, CONFIGURATION           |
+| Frontend App                | ARCHITECTURE, WORKFLOWS, CONFIGURATION |
 
 ## How to Use the Prompts
 
@@ -62,13 +62,37 @@ Not every project needs every document. Use this guide:
 2. Copy the prompt text
 3. Replace `{ProjectName}` with your actual project name
 4. Give the AI access to your codebase
-5. Save the output as the corresponding `.md` file in your project
+5. Output is saved to `output/{ProjectName}/`
 
-## Generated Documentation Structure
+## Output Locations
+
+Within this workspace, all generated files are saved to:
 
 ```text
-Repository Root/
-├── SOLUTION.md              ← Repository overview (for multi-project)
+documentation-generation/
+├── output/
+│   ├── {ProjectName}/           # Generated documentation
+│   │   ├── ARCHITECTURE.md
+│   │   ├── DATA.md
+│   │   └── ...
+│   └── _notes/                  # Working notes (can be deleted after)
+│       └── {ProjectName}/
+│           ├── ARCHITECTURE.notes.md
+│           ├── DATA.notes.md
+│           └── ...
+```
+
+The `_notes/` folder contains incremental notes the AI creates while analyzing
+files. These protect against context limits and can help troubleshoot if output
+seems incomplete. They can be safely deleted after documentation is finalized.
+
+### Copying to Your Repository
+
+Once generated, you can copy the documentation into your actual project:
+
+```text
+your-repository/
+├── REPOSITORY.md            ← Repository overview (for multi-project)
 │
 ├── api-service/
 │   ├── ARCHITECTURE.md      ← System design
@@ -92,14 +116,14 @@ debugging issues.
 
 **Which documents to provide based on the problem:**
 
-| Issue Type                     | Provide These Documents        |
-| ------------------------------ | ------------------------------ |
-| Understanding a component      | ARCHITECTURE.md                |
-| Database or entity errors      | ARCHITECTURE.md + DATA.md      |
-| Process not working correctly  | ARCHITECTURE.md + WORKFLOWS.md |
-| Configuration/deployment issue | CONFIGURATION.md               |
-| API integration problem        | API.md + WORKFLOWS.md          |
-| Cross-project issue            | SOLUTION.md + relevant project docs |
+| Issue Type                    | Provide These Documents               |
+| ----------------------------- | ------------------------------------- |
+| Understanding a component     | ARCHITECTURE.md                       |
+| Database or entity errors     | ARCHITECTURE.md + DATA.md             |
+| Process not working correctly | ARCHITECTURE.md + WORKFLOWS.md        |
+| Configuration/deployment issue | CONFIGURATION.md                      |
+| API integration problem       | API.md + WORKFLOWS.md                 |
+| Cross-project issue           | REPOSITORY.md + relevant project docs |
 
 **How to ask for help:**
 

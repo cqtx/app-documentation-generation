@@ -36,13 +36,32 @@ Save all generated files to:
 
 ## Additional Resources
 
-When you need deeper context beyond the source code:
+When you need deeper context beyond the source code, check the `databases/` folder.
 
-| Resource       | Location                          | Use For                        |
-| -------------- | --------------------------------- | ------------------------------ |
-| DB Schema      | `../application/database/schema/`     | Table definitions, views   |
-| DB Procedures  | `../application/database/procedures/` | Stored procs, functions    |
-| DB Seed Data   | `../application/database/seed-data/`  | Default values, lookups    |
+**Default structure** (customize for your project):
+
+| Resource       | Location                                    | Use For                  |
+| -------------- | ------------------------------------------- | ------------------------ |
+| DB Schema      | `../application/databases/{db-type}/schema/`    | Table definitions, views |
+| DB Procedures  | `../application/databases/{db-type}/procedures/`| Stored procs, functions  |
+| DB Seed Data   | `../application/databases/{db-type}/seed-data/` | Default values, lookups  |
+
+**⚠️ Important:** Update this table to match your actual folder structure. Examples:
+
+Single database (PostgreSQL):
+
+| Resource       | Location                                   | Use For                  |
+| -------------- | ------------------------------------------ | ------------------------ |
+| Schema         | `../application/databases/postgres/schema/`    | Table definitions    |
+| Seed Data      | `../application/databases/postgres/seed-data/` | Reference data       |
+
+Multiple databases (MySQL + DB2):
+
+| Resource       | Location                                   | Use For                  |
+| -------------- | ------------------------------------------ | ------------------------ |
+| MySQL Schema   | `../application/databases/mysql/schema/`       | Table definitions    |
+| MySQL Seed     | `../application/databases/mysql/seed-data/`    | Reference data       |
+| DB2 Procedures | `../application/databases/db2/procedures/`     | Mainframe operations |
 
 Reference these when documenting:
 
@@ -57,7 +76,7 @@ Reference these when documenting:
 3. Determine project type (API, library, worker, etc.)
 4. Run the appropriate prompts per the README guidance
 5. Save outputs to `../output/{ProjectName}/`
-6. Run `PROMPT-SOLUTION.md` **last** (after all projects are documented)
+6. Run `PROMPT-REPOSITORY.md` **last** (after all projects are documented)
 
 ## Verification
 
