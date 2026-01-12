@@ -36,6 +36,11 @@ incrementally as you read each file. This protects against context limits.
 
 Also note ORM configurations, repository patterns, and data access classes.
 
+**Also check** the `../application/databases/` folder structure (see Initial-prompt.md) for:
+- Schema files → Table definitions, indexes, constraints
+- Seed data → Reference data and default values
+- Stored procedures → Database-level business logic
+
 If you cannot read a file completely, note that in the file entry.
 
 After all files are processed, use the notes to write the final documentation.
@@ -98,7 +103,7 @@ caused bugs or confusion in the past.
 At the end of the document, include:
 
 - **Fully read**: [list files you completely analyzed]
-- **Partially read**: [list files that were too large to fully read]
+- **Partially read**: [list files where the notes file was used instead of complete reading]
 - **Skipped**: [list any files not accessed, and why]
 ````
 

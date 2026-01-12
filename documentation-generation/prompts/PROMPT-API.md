@@ -41,6 +41,8 @@ incrementally as you read each file. This protects against context limits.
 
 If you cannot read a file completely, note that in the file entry.
 
+Also note any database operations performed by endpoints for later DATA.md documentation.
+
 After all files are processed, use the notes to write the final documentation.
 
 ## Writing the Documentation
@@ -111,7 +113,7 @@ Common usage patterns. How to create a resource then fetch it, etc.
 At the end of the document, include:
 
 - **Fully read**: [list files you completely analyzed]
-- **Partially read**: [list files that were too large to fully read]
+- **Partially read**: [list files where the notes file was used instead of complete reading]
 - **Skipped**: [list any files not accessed, and why]
 ````
 

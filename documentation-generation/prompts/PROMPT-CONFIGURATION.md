@@ -41,6 +41,11 @@ build it incrementally as you read each file. This protects against context limi
 - ClassName: What settings it binds to
 ```
 
+**Also check** the `../application/databases/` folder structure (see Initial-prompt.md) for:
+- Schema files → Database setup requirements
+- Seed data → Environment-specific initialization
+- Procedures → Database configuration dependencies
+
 Start with config files (config.json, .env.example, settings.py, etc.), then 
 search for configuration access patterns in code files.
 
@@ -114,7 +119,7 @@ Anything different about staging, production, etc.
 At the end of the document, include:
 
 - **Fully read**: [list files you completely analyzed]
-- **Partially read**: [list files that were too large to fully read]
+- **Partially read**: [list files where the notes file was used instead of complete reading]
 - **Skipped**: [list any files not accessed, and why]
 ````
 

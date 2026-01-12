@@ -119,7 +119,7 @@ Links to each project's documentation:
 At the end of the document, include:
 
 - **Fully read**: [list projects/files you completely analyzed]
-- **Partially read**: [list projects/files that were too large to fully read]
+- **Partially read**: [list files where the notes file was used instead of complete reading]
 - **Skipped**: [list any projects/files not accessed, and why]
 ````
 

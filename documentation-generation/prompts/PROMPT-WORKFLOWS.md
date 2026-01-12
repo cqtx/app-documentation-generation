@@ -36,6 +36,10 @@ build it incrementally as you read each file. This protects against context limi
 - **Output**: What gets returned/published/saved
 ```
 
+**Also check** the `../application/databases/` folder structure (see Initial-prompt.md) for:
+- Stored procedures → Business logic workflows
+- Seed data → Initial state and reference data
+
 If you cannot read a file completely, note that in the file entry.
 
 After all files are processed, use the notes to write the final documentation.
@@ -93,7 +97,7 @@ APIs it calls or exposes.
 At the end of the document, include:
 
 - **Fully read**: [list files you completely analyzed]
-- **Partially read**: [list files that were too large to fully read]
+- **Partially read**: [list files where the notes file was used instead of complete reading]
 - **Skipped**: [list any files not accessed, and why]
 ````
 

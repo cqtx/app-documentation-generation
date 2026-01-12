@@ -34,6 +34,10 @@ build it incrementally as you read each file. This protects against context limi
 - **Notes**: Anything notable (patterns, complexity, concerns)
 ```
 
+**Also check** the `../application/databases/` folder structure (see Initial-prompt.md) for:
+- Schema files → Database architecture
+- Procedures → Database-tier components
+
 If you cannot read a file completely, note that in the file entry.
 
 After all files are processed, use the notes to write the final documentation.
@@ -81,6 +85,9 @@ question or need to understand.
 What external services, databases, or libraries does this rely on? Why those 
 choices?
 
+Check the `databases/` folder structure (see Initial-prompt.md) for database-related
+dependencies and constraints.
+
 ## Boundaries
 What this project is NOT responsible for. Where does it hand off to other 
 systems?
@@ -96,7 +103,7 @@ you'll need to understand Z first."
 At the end of the document, include:
 
 - **Fully read**: [list files you completely analyzed]
-- **Partially read**: [list files that were too large to fully read]
+- **Partially read**: [list files where the notes file was used instead of complete reading]
 - **Skipped**: [list any files not accessed, and why]
 ````
 
