@@ -1,7 +1,5 @@
 # Copilot Instructions
 
-**Recommended Model:** Claude Sonnet 4.5 or better for optimal results.
-
 This workspace is for generating documentation for software projects.
 It works with any language or framework.
 
@@ -19,7 +17,7 @@ It works with any language or framework.
 └── documentation-generation/
     ├── prompts/                   # Documentation generation prompts
     │   └── Initial-prompt.md      # START HERE
-    ├── output/                    # Generated documentation
+    ├── output/                    # Generated docs (ARCHITECTURE, DATA, API, etc.)
     └── README.md                  # Prompt usage guide
 ```
 
@@ -68,3 +66,21 @@ First, detect the language/framework from the codebase, then determine type:
 | Utilities, helpers, extensions      | Utility library        | ARCH, CONFIG, DEPENDENCIES        |
 | CLI commands, argument parsing      | CLI tool               | ARCH, CONFIG                      |
 | Components, pages, routes (UI)      | Frontend app           | ARCH, WORKFLOWS, CONFIG, SECURITY |
+
+## When Asked to Help with Code Questions or Troubleshooting
+
+If documentation exists in `documentation-generation/output/`:
+
+1. **Start with the index**: Read `REPOSITORY.md` first (if it exists) to understand what projects exist and how they relate. For single-project repos, skip to step 3.
+2. **Identify the relevant project(s)**: Based on the question, error message, or file paths mentioned, determine which project(s) are involved.
+3. **Read ARCHITECTURE.md for that project**: This gives you the component map and helps narrow down where to look.
+4. **Then read the specific doc based on the issue type**:
+   - Entity/database errors → DATA.md
+   - Process not completing, wrong behavior → WORKFLOWS.md
+   - API call failing, wrong response → API.md
+   - Startup failures, missing config → CONFIGURATION.md
+   - Auth/permission denied errors → SECURITY.md
+   - Package conflicts, version issues → DEPENDENCIES.md
+5. **Only then dive into source code** if the docs don't fully answer the question.
+
+This navigation pattern (index → architecture → specific topic) loads 2-3 focused documents instead of everything, keeping context clear and accurate.

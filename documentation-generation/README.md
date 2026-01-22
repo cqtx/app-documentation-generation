@@ -62,14 +62,6 @@ Not every project needs every document. Use this guide:
 | CLI Tool                    | ARCHITECTURE, CONFIGURATION                     |
 | Frontend App                | ARCHITECTURE, WORKFLOWS, CONFIG, SECURITY       |
 
-## How to Use the Prompts
-
-1. Open a prompt file
-2. Copy the prompt text
-3. Replace `{ProjectName}` with your actual project name
-4. Give the AI access to your codebase
-5. Output is saved to `output/{ProjectName}/`
-
 ## Output Locations
 
 Within this workspace, all generated files are saved to:
@@ -81,75 +73,49 @@ documentation-generation/
 │   │   ├── ARCHITECTURE.md
 │   │   ├── DATA.md
 │   │   └── ...
-│   └── _notes/                  # Working notes (can be deleted after)
+│   └── _notes/                  # Working notes
 │       └── {ProjectName}/
 │           ├── ARCHITECTURE.notes.md
 │           ├── DATA.notes.md
 │           └── ...
 ```
 
-The `_notes/` folder contains incremental notes the AI creates while analyzing
-files. These protect against context limits and can help troubleshoot if output
-seems incomplete. They can be safely deleted after documentation is finalized.
-
-### Copying to Your Repository
-
-Once generated, you can copy the documentation into your actual project:
-
-```text
-your-repository/
-├── REPOSITORY.md            ← Repository overview (for multi-project)
-│
-├── api-service/
-│   ├── ARCHITECTURE.md      ← System design
-│   ├── DATA.md              ← Entities and schema
-│   ├── WORKFLOWS.md         ← Business processes
-│   ├── API.md               ← Endpoints (if applicable)
-│   └── CONFIGURATION.md     ← Settings required
-│
-├── core-library/
-│   ├── ARCHITECTURE.md
-│   └── ...
-│
-└── shared/
-    └── ARCHITECTURE.md      ← Even simple libraries benefit
-```
+The `_notes/` folder contains incremental notes created while analyzing files.
+These protect against context limits.
 
 ## Using for Troubleshooting
 
-Once generated, this documentation helps AI understand your codebase when
-debugging issues.
+When helping with questions or debugging issues, navigate the generated
+documentation to understand the codebase.
 
-**Which documents to provide based on the problem:**
+### Navigation Path
 
-| Issue Type                     | Provide These Documents               |
-| ------------------------------ | ------------------------------------- |
-| Understanding a component      | ARCHITECTURE.md                       |
-| Database or entity errors      | ARCHITECTURE.md + DATA.md             |
-| Process not working correctly  | ARCHITECTURE.md + WORKFLOWS.md        |
-| Configuration/deployment issue | CONFIGURATION.md                      |
-| API integration problem        | API.md + WORKFLOWS.md                 |
-| Authentication/authorization   | SECURITY.md + ARCHITECTURE.md         |
-| Dependency conflicts/updates   | DEPENDENCIES.md                       |
-| Cross-project issue            | REPOSITORY.md + relevant project docs |
+Follow this path from general to specific:
 
-**How to ask for help:**
+1. **REPOSITORY.md** (if multi-project) → Identifies which project(s) are involved
+2. **ARCHITECTURE.md** → Provides the component map for that project
+3. **Specific doc** → Based on the issue type (see table below)
+4. **Source code** → Only if documentation doesn't fully answer the question
 
-1. Start with the relevant documentation files
-2. Describe the error or unexpected behavior
-3. Include code snippets if helpful
+Load 2-3 focused documents instead of everything to keep context clear.
 
-The AI already understands the system from the documentation - it knows the
-components, data model, and workflows. This lets it give targeted answers
-instead of generic troubleshooting steps.
+### Which Document for Which Problem
 
-## Maintenance
+| Issue Type                          | Navigation Path                   |
+| ----------------------------------- | --------------------------------- |
+| Understanding a component           | ARCHITECTURE.md                   |
+| Database or entity errors           | ARCHITECTURE.md → DATA.md         |
+| Process not working correctly       | ARCHITECTURE.md → WORKFLOWS.md    |
+| API call failing, wrong response    | ARCHITECTURE.md → API.md          |
+| Configuration/deployment issue      | CONFIGURATION.md                  |
+| Authentication/authorization        | ARCHITECTURE.md → SECURITY.md     |
+| Dependency conflicts/updates        | DEPENDENCIES.md                   |
+| Cross-project issue                 | REPOSITORY.md → relevant projects |
 
-Regenerate documentation when:
+### Responding to Help Requests
 
-- Major architectural changes occur
-- New entities or workflows are added
-- API contracts change significantly
+When the user describes a problem:
 
-Small changes can often be manually edited - these are meant to be living
-documents, not generated artifacts.
+1. Identify keywords: error messages, file paths, component names
+2. Read the appropriate documentation based on the issue type above
+3. Navigate to source code only if docs don't fully answer the question

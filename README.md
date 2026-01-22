@@ -102,39 +102,99 @@ The `.github/copilot-instructions.md` file provides context automatically.
 
 ## Using Generated Documentation for Troubleshooting
 
-Once documentation is generated, you can use it to help AI understand your
-codebase when debugging issues.
+Once documentation is generated, the AI can use it to understand your codebase
+when helping with questions or debugging issues.
 
-**When you encounter a bug or need to understand behavior:**
+### How Navigation Works
 
-1. Provide the relevant documentation files to the AI:
-   - `ARCHITECTURE.md` - For understanding system design and component roles
-   - `DATA.md` - For entity relationships and database issues
-   - `WORKFLOWS.md` - For tracing business process flow
-   - `CONFIGURATION.md` - For environment and settings issues
-   - `SECURITY.md` - For authentication/authorization issues
-   - `DEPENDENCIES.md` - For package conflicts or update decisions
+The AI follows a path from general to specific, loading only what's needed:
 
-2. Describe the problem:
+1. **REPOSITORY.md** (multi-project repos) → Identifies which project(s) are involved
+2. **ARCHITECTURE.md** → Provides the component map for that project
+3. **Specific doc** → Based on the issue type (see below)
+4. **Source code** → Only if docs don't fully answer the question
+
+This keeps context focused and avoids confusion from loading everything at once.
+
+### Which Document for Which Problem
+
+| Issue Type                          | Start With                        |
+| ----------------------------------- | --------------------------------- |
+| Understanding a component           | ARCHITECTURE.md                   |
+| Entity/database errors              | ARCHITECTURE.md → DATA.md         |
+| Process not completing correctly    | ARCHITECTURE.md → WORKFLOWS.md    |
+| API call failing, wrong response    | ARCHITECTURE.md → API.md          |
+| Startup failures, missing config    | CONFIGURATION.md                  |
+| Auth/permission denied errors       | ARCHITECTURE.md → SECURITY.md     |
+| Package conflicts, version issues   | DEPENDENCIES.md                   |
+| Cross-project issues                | REPOSITORY.md → relevant projects |
+
+### How to Ask for Help
+
+1. **Describe the problem:**
    - Error message or unexpected behavior
    - What you expected to happen
-   - Steps to reproduce
+   - Steps to reproduce (if applicable)
 
-**Why this works:**
+2. **Let the AI navigate:** The AI will read the appropriate documentation
+   files based on your description, then dive into source code if needed.
 
-The documentation tells the AI *where* to look - which modules, services, and
-workflows are involved. The error message tells it *what* to look for. The AI
-can then navigate to the relevant code files itself based on this context.
+You don't need to manually attach documentation files or paste code snippets.
+The AI has access to your codebase and will locate the relevant files based
+on the documentation and your error message.
 
-You don't need to paste code snippets - the AI has access to your codebase and
-can locate the files mentioned in the documentation and error message.
+## How to Use the Prompts
 
-**Tips for effective troubleshooting:**
+1. Open a prompt file in `documentation-generation/prompts/`
+2. Copy the prompt text
+3. Replace `{ProjectName}` with your actual project name
+4. Give the AI access to your codebase
+5. Output is saved to `documentation-generation/output/{ProjectName}/`
 
-- Start with `ARCHITECTURE.md` for any issue - it provides essential context
-- Add `DATA.md` when the issue involves entities or database operations
-- Add `WORKFLOWS.md` when tracing a multi-step process
-- Only include what's relevant - don't overload with all documentation
+## Copying to Your Repository
+
+Once generated, you can copy the documentation into your actual project:
+
+```text
+your-repository/
+├── REPOSITORY.md            ← Repository overview (for multi-project)
+│
+├── api-service/
+│   ├── ARCHITECTURE.md      ← System design
+│   ├── DATA.md              ← Entities and schema
+│   ├── WORKFLOWS.md         ← Business processes
+│   ├── API.md               ← Endpoints (if applicable)
+│   └── CONFIGURATION.md     ← Settings required
+│
+├── core-library/
+│   ├── ARCHITECTURE.md
+│   └── ...
+│
+└── shared/
+    └── ARCHITECTURE.md      ← Even simple libraries benefit
+```
+
+## Maintenance
+
+Regenerate documentation when:
+
+- Major architectural changes occur
+- New entities or workflows are added
+- API contracts change significantly
+
+Small changes can often be manually edited - these are meant to be living
+documents, not generated artifacts.
+
+## Limitations
+
+This documentation captures what can be learned from reading the code. It won't include:
+
+- **Runtime behavior** - Performance characteristics, actual load patterns, or timing issues
+- **Tribal knowledge** - Undocumented decisions, workarounds, or "why we don't touch that code"
+- **Historical context** - Why certain bugs exist, failed approaches that were tried before
+- **External dependencies** - How third-party services actually behave vs. their documentation
+
+For these, you'll still need team knowledge or additional context when troubleshooting.
 
 ## Customization
 
