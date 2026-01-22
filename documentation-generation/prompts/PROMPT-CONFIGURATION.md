@@ -18,7 +18,7 @@ build it incrementally as you read each file. This protects against context limi
 
 **For each file that uses configuration:**
 
-1. Read the file in its ENTIRETY - do not read partial line ranges
+1. Read files completely. For files over 500 lines, read in chunks and append findings to the notes file as you go
 2. Immediately append any configuration findings to the notes file
 3. Move to the next file
 
@@ -118,9 +118,9 @@ Anything different about staging, production, etc.
 
 At the end of the document, include:
 
-- **Fully read**: [list files you completely analyzed]
-- **Partially read**: [list files where the notes file was used instead of complete reading]
-- **Skipped**: [list any files not accessed, and why]
+- **Fully read**: Files you read completely in one pass
+- **Partially read**: Files read in chunks due to size (note approximate line count)
+- **Skipped**: Files not read, with reason (binary, minified, generated, too large, etc.)
 ````
 
 ---

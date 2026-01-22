@@ -35,7 +35,7 @@ for the actual folder locations configured for this project.
 ## Key Rules
 
 - Always read the full content of code files before documenting
-- For files over 200 lines, confirm complete reading
+- For files over 500 lines, read in chunks and append findings to notes files as you go
 - Include "Files Analyzed" section at end of each document
 - Reference database folders when documenting DATA.md and WORKFLOWS.md
 - Run PROMPT-REPOSITORY.md last, after all projects are documented
@@ -59,12 +59,12 @@ Reference `.markdownlint.json` in the workspace root for the full configuration.
 
 First, detect the language/framework from the codebase, then determine type:
 
-| If project contains...              | It's likely a...       | Run these prompts          |
-| ----------------------------------- | ---------------------- | -------------------------- |
-| Route handlers, API endpoints       | Web API                | All prompts                |
-| ORM models, repositories            | Data access layer      | ARCH, DATA, CONFIG         |
-| Services, commands, business logic  | Business logic library | ARCH, DATA, WORKFLOWS, CFG |
-| Workers, schedulers, queue handlers | Background service     | ARCH, DATA, WORKFLOWS, CFG |
-| Utilities, helpers, extensions      | Utility library        | ARCH, CONFIG only          |
-| CLI commands, argument parsing      | CLI tool               | ARCH, CONFIG               |
-| Components, pages, routes (UI)      | Frontend app           | ARCH, WORKFLOWS, CONFIG    |
+| If project contains...              | It's likely a...       | Run these prompts                 |
+| ----------------------------------- | ---------------------- | --------------------------------- |
+| Route handlers, API endpoints       | Web API                | All (including SECURITY, DEPS)    |
+| ORM models, repositories            | Data access layer      | ARCH, DATA, CONFIG                |
+| Services, commands, business logic  | Business logic library | ARCH, DATA, WORKFLOWS, CONFIG     |
+| Workers, schedulers, queue handlers | Background service     | ARCH, DATA, WORKFLOWS, CONFIG     |
+| Utilities, helpers, extensions      | Utility library        | ARCH, CONFIG, DEPENDENCIES        |
+| CLI commands, argument parsing      | CLI tool               | ARCH, CONFIG                      |
+| Components, pages, routes (UI)      | Frontend app           | ARCH, WORKFLOWS, CONFIG, SECURITY |

@@ -16,6 +16,10 @@ Generate standard documentation for all projects in `../application/source/`.
 ../application/source/{ProjectName}/
 ```
 
+**Note:** Replace `{ProjectName}` with the folder name of the project you're documenting
+(e.g., `api-service`, `core-library`). Use this same name consistently in output paths and
+notes files.
+
 ## Output Location
 
 Save all generated files to:
@@ -69,6 +73,20 @@ Reference these when documenting:
 - WORKFLOWS.md → Check procedures for business logic
 - CONFIGURATION.md → Check for connection strings and settings
 
+## Files to Skip
+
+Do not attempt to read or document these file types:
+
+- **Dependency folders**: `node_modules/`, `vendor/`, `packages/`, `.nuget/`
+- **Build output**: `dist/`, `build/`, `bin/`, `obj/`, `out/`, `target/`
+- **Minified files**: `*.min.js`, `*.min.css`, `*.bundle.js`
+- **Binary files**: images, fonts, compiled files, archives
+- **Lock files**: `package-lock.json`, `yarn.lock`, `Cargo.lock`, `poetry.lock`
+- **Generated code**: files marked as auto-generated, `.designer.cs`, `*.g.cs`
+- **IDE/editor files**: `.idea/`, `.vscode/` (except settings you need), `*.suo`
+
+If you encounter a file you cannot parse, note it in the "Skipped" section with the reason.
+
 ## Execution Order
 
 1. List all projects in `../application/source/`
@@ -80,9 +98,30 @@ Reference these when documenting:
 
 ## Verification
 
-After completing each project, confirm:
+After completing each document, run this self-check before moving to the next prompt:
 
-- [ ] All relevant prompts were run for the project type
-- [ ] Files are saved in correct output folder
-- [ ] "Files Analyzed" section is included in each document
-- [ ] Markdown follows rules in `.markdownlint.json` (blank lines around headings/lists/code blocks, spaces in tables)
+### Document Quality Check
+
+- [ ] **Completeness**: Does the document cover all major aspects for its type?
+  - ARCHITECTURE: Overview, tech stack, key components, how it works, design decisions
+  - DATA: Entities, relationships, database details, data flows
+  - WORKFLOWS: Major processes with triggers, steps, error handling, outputs
+  - API: Authentication, endpoints with parameters/responses/errors
+  - CONFIGURATION: Required settings, environment variables, local setup steps
+  - SECURITY: Auth methods, authorization model, data protection, input validation
+  - DEPENDENCIES: Runtime/dev packages with versions, licenses, rationale
+- [ ] **Files Analyzed section**: Is it present at the end with fully read/partially read/skipped?
+- [ ] **Specificity**: Does it reference actual file names, class names, and code patterns from this project (not generic placeholders)?
+- [ ] **Readability**: Would a new developer understand this without reading the code first?
+
+### Technical Check
+
+- [ ] **Markdown formatting**: Blank lines around headings/lists/code blocks, spaces in tables
+- [ ] **Output location**: File saved to `../output/{ProjectName}/`
+- [ ] **Notes file**: Incremental notes saved to `../output/_notes/{ProjectName}/`
+
+### After All Projects Complete
+
+- [ ] All relevant prompts were run for each project type
+- [ ] PROMPT-REPOSITORY.md was run last (for multi-project repos)
+- [ ] Cross-references between documents are consistent

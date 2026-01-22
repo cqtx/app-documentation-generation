@@ -13,6 +13,8 @@ documentation that any developer (or AI) already knows how to read:
 - `WORKFLOWS.md` - Key business processes end-to-end
 - `API.md` - Endpoints, contracts, authentication
 - `CONFIGURATION.md` - Settings, environment variables, secrets
+- `SECURITY.md` - Authentication, authorization, data protection (optional)
+- `DEPENDENCIES.md` - Package inventory with licenses and rationale (optional)
 
 ## Quick Start
 
@@ -25,6 +27,8 @@ Run these prompts in order (skip any that don't apply):
 3. `PROMPT-WORKFLOWS.md` → Creates `WORKFLOWS.md`
 4. `PROMPT-API.md` → Creates `API.md`
 5. `PROMPT-CONFIGURATION.md` → Creates `CONFIGURATION.md`
+6. `PROMPT-SECURITY.md` → Creates `SECURITY.md` (optional)
+7. `PROMPT-DEPENDENCIES.md` → Creates `DEPENDENCIES.md` (optional)
 
 ### For a Multi-Project Repository
 
@@ -35,26 +39,28 @@ Run these prompts in order (skip any that don't apply):
 
 Not every project needs every document. Use this guide:
 
-| Prompt                    | When to Use                                    |
-| ------------------------- | ---------------------------------------------- |
-| `PROMPT-ARCHITECTURE.md`  | **Always** - every project                     |
-| `PROMPT-DATA.md`          | Has entities, database access, or manages data |
-| `PROMPT-WORKFLOWS.md`     | Has business logic or processes                |
-| `PROMPT-API.md`           | Web API, REST endpoints, or HTTP interface     |
-| `PROMPT-CONFIGURATION.md` | **Always** - every project needs setup info    |
-| `PROMPT-REPOSITORY.md`    | Multi-project repositories only                |
+| Prompt                    | When to Use                                       |
+| ------------------------- | ------------------------------------------------- |
+| `PROMPT-ARCHITECTURE.md`  | **Always** - every project                        |
+| `PROMPT-DATA.md`          | Has entities, database access, or manages data    |
+| `PROMPT-WORKFLOWS.md`     | Has business logic or processes                   |
+| `PROMPT-API.md`           | Web API, REST endpoints, or HTTP interface        |
+| `PROMPT-CONFIGURATION.md` | **Always** - every project needs setup info       |
+| `PROMPT-SECURITY.md`      | Handles auth, sensitive data, or compliance needs |
+| `PROMPT-DEPENDENCIES.md`  | Significant dependencies or license requirements  |
+| `PROMPT-REPOSITORY.md`    | Multi-project repositories only                   |
 
 ### Examples by Project Type
 
-| Project Type                | Prompts to Run                        |
-| --------------------------- | ------------------------------------- |
-| Web API / Backend Service   | All                                   |
-| Library (business logic)    | ARCHITECTURE, DATA, WORKFLOWS, CONFIG |
-| Library (utilities/helpers) | ARCHITECTURE, CONFIGURATION           |
-| Worker / Background Service | ARCHITECTURE, DATA, WORKFLOWS, CONFIG |
-| Shared / Common Package     | ARCHITECTURE, CONFIGURATION           |
-| CLI Tool                    | ARCHITECTURE, CONFIGURATION           |
-| Frontend App                | ARCHITECTURE, WORKFLOWS, CONFIGURATION |
+| Project Type                | Prompts to Run                                  |
+| --------------------------- | ----------------------------------------------- |
+| Web API / Backend Service   | All (including SECURITY, DEPENDENCIES)          |
+| Library (business logic)    | ARCHITECTURE, DATA, WORKFLOWS, CONFIG           |
+| Library (utilities/helpers) | ARCHITECTURE, CONFIGURATION, DEPENDENCIES       |
+| Worker / Background Service | ARCHITECTURE, DATA, WORKFLOWS, CONFIG           |
+| Shared / Common Package     | ARCHITECTURE, CONFIGURATION                     |
+| CLI Tool                    | ARCHITECTURE, CONFIGURATION                     |
+| Frontend App                | ARCHITECTURE, WORKFLOWS, CONFIG, SECURITY       |
 
 ## How to Use the Prompts
 
@@ -116,14 +122,16 @@ debugging issues.
 
 **Which documents to provide based on the problem:**
 
-| Issue Type                    | Provide These Documents               |
-| ----------------------------- | ------------------------------------- |
-| Understanding a component     | ARCHITECTURE.md                       |
-| Database or entity errors     | ARCHITECTURE.md + DATA.md             |
-| Process not working correctly | ARCHITECTURE.md + WORKFLOWS.md        |
+| Issue Type                     | Provide These Documents               |
+| ------------------------------ | ------------------------------------- |
+| Understanding a component      | ARCHITECTURE.md                       |
+| Database or entity errors      | ARCHITECTURE.md + DATA.md             |
+| Process not working correctly  | ARCHITECTURE.md + WORKFLOWS.md        |
 | Configuration/deployment issue | CONFIGURATION.md                      |
-| API integration problem       | API.md + WORKFLOWS.md                 |
-| Cross-project issue           | REPOSITORY.md + relevant project docs |
+| API integration problem        | API.md + WORKFLOWS.md                 |
+| Authentication/authorization   | SECURITY.md + ARCHITECTURE.md         |
+| Dependency conflicts/updates   | DEPENDENCIES.md                       |
+| Cross-project issue            | REPOSITORY.md + relevant project docs |
 
 **How to ask for help:**
 

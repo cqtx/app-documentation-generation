@@ -19,7 +19,7 @@ build it incrementally as you review each project. This protects against context
 
 **For each project/package in the repository:**
 
-1. Read the project manifest (package.json, pom.xml, .csproj, Cargo.toml, etc.)
+1. Read the project manifest (package.json, pom.xml, .csproj, Cargo.toml, etc.). For large manifests, read in chunks
 2. Read the project's ARCHITECTURE.md if it exists
 3. Immediately append notes for that project to `../output/_notes/{RepositoryName}/REPOSITORY.notes.md`
 4. Move to the next project
@@ -118,9 +118,9 @@ Links to each project's documentation:
 
 At the end of the document, include:
 
-- **Fully read**: [list projects/files you completely analyzed]
-- **Partially read**: [list files where the notes file was used instead of complete reading]
-- **Skipped**: [list any projects/files not accessed, and why]
+- **Fully read**: Projects/files you read completely in one pass
+- **Partially read**: Files read in chunks due to size (note approximate line count)
+- **Skipped**: Projects/files not read, with reason (binary, minified, generated, too large, etc.)
 ````
 
 ---

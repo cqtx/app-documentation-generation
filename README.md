@@ -66,13 +66,15 @@ After creating your folders, update the "Additional Resources" table in
 
 For each project:
 
-| Document           | Contains                             |
-| ------------------ | ------------------------------------ |
-| `ARCHITECTURE.md`  | System design, components, decisions |
-| `DATA.md`          | Entities, relationships, schema      |
-| `WORKFLOWS.md`     | Business processes, data flows       |
-| `API.md`           | REST endpoints, authentication       |
-| `CONFIGURATION.md` | Settings, secrets, setup             |
+| Document           | Contains                               |
+| ------------------ | -------------------------------------- |
+| `ARCHITECTURE.md`  | System design, components, decisions   |
+| `DATA.md`          | Entities, relationships, schema        |
+| `WORKFLOWS.md`     | Business processes, data flows         |
+| `API.md`           | REST endpoints, authentication         |
+| `CONFIGURATION.md` | Settings, secrets, setup               |
+| `SECURITY.md`      | Auth flows, data protection (optional) |
+| `DEPENDENCIES.md`  | Packages, licenses, rationale (optional)|
 
 For multi-project repositories:
 
@@ -110,6 +112,8 @@ codebase when debugging issues.
    - `DATA.md` - For entity relationships and database issues
    - `WORKFLOWS.md` - For tracing business process flow
    - `CONFIGURATION.md` - For environment and settings issues
+   - `SECURITY.md` - For authentication/authorization issues
+   - `DEPENDENCIES.md` - For package conflicts or update decisions
 
 2. Describe the problem:
    - Error message or unexpected behavior
