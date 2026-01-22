@@ -143,14 +143,6 @@ You don't need to manually attach documentation files or paste code snippets.
 The AI has access to your codebase and will locate the relevant files based
 on the documentation and your error message.
 
-## How to Use the Prompts
-
-1. Open a prompt file in `documentation-generation/prompts/`
-2. Copy the prompt text
-3. Replace `{ProjectName}` with your actual project name
-4. Give the AI access to your codebase
-5. Output is saved to `documentation-generation/output/{ProjectName}/`
-
 ## Copying to Your Repository
 
 Once generated, you can copy the documentation into your actual project:
